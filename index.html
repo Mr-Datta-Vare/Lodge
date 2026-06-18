@@ -3,135 +3,269 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VareX - Premium Lodge Management System</title>
-  <meta name="description" content="A complete cloud-based software solution for managing rooms, guests, bookings, payments, and billing.">
-  <link rel="stylesheet" href="/src/styles.css">
+  <title>VareX Lodge - Premium Lodging & Booking Portal</title>
+  <meta name="description" content="Book premium Deluxe, AC, and Non-AC rooms online at VareX Lodge. Enjoy cozy spaces, high-end amenities, and seamless customer service.">
+  <link rel="stylesheet" href="/src/public-styles.css">
 </head>
 <body>
-  <div class="app-container">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="logo-container">
-        <div class="logo-icon">VX</div>
-        <div class="logo-text">
-          <h1>VareX</h1>
-          <span>Lodge System</span>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container" style="display:flex; justify-content:space-between; width:100%; align-items:center">
+      <div class="nav-brand">
+        <div class="nav-logo">VX</div>
+        <div class="nav-logo-text">
+          <h1>VareX Lodge</h1>
+          <span>Cozy & Premium Rooms</span>
         </div>
       </div>
+      
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#booking">Book Stay</a></li>
+        </ul>
+      </nav>
 
-      <ul class="nav-links">
-        <li class="nav-item">
-          <a class="nav-link active" data-view="dashboard">
-            <svg viewBox="0 0 24 24" width="24" height="24">
-              <rect x="3" y="3" width="7" height="9" rx="1"></rect>
-              <rect x="14" y="3" width="7" height="5" rx="1"></rect>
-              <rect x="14" y="12" width="7" height="9" rx="1"></rect>
-              <rect x="3" y="16" width="7" height="5" rx="1"></rect>
-            </svg>
-            <span>Dashboard</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-view="rooms">
-            <svg viewBox="0 0 24 24" width="24" height="24">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-              <polyline points="9 22 9 12 15 12 15 22"></polyline>
-            </svg>
-            <span>Rooms Grid</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-view="checkin">
-            <svg viewBox="0 0 24 24" width="24" height="24">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="8.5" cy="7" r="4"></circle>
-              <line x1="20" y1="8" x2="20" y2="14"></line>
-              <line x1="23" y1="11" x2="17" y2="11"></line>
-            </svg>
-            <span>Smart Check-In</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-view="guests">
-            <svg viewBox="0 0 24 24" width="24" height="24">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="8.5" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
-            <span>Guest Register</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-view="billing">
-            <svg viewBox="0 0 24 24" width="24" height="24">
-              <line x1="12" y1="1" x2="12" y2="23"></line>
-              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-            </svg>
-            <span>Billing & Checkout</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-view="bookingSimulator">
-            <svg viewBox="0 0 24 24" width="24" height="24">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
-            <span>Online Simulator</span>
-          </a>
-        </li>
-      </ul>
+      <a href="/admin.html" class="btn-admin-portal">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        Staff Portal
+      </a>
+    </div>
+  </header>
 
-      <div class="sidebar-footer">
-        <div class="user-badge">
-          <div class="user-avatar">AD</div>
-          <div class="user-info">
-            <h4>Admin Desk</h4>
-            <p>VareX Terminal 1</p>
-          </div>
-        </div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-tag">Welcome to Comfort</span>
+      <h2>Your Premium Sanctuary in the City</h2>
+      <p>Experience high-end hospitality, fully-equipped AC & Deluxe rooms, and responsive 24/7 client services all under one roof.</p>
+      <a href="#booking" class="btn-book-now">Book Your Room Online</a>
+    </div>
+  </section>
+
+  <!-- Rooms Showcase Grid -->
+  <section class="container" id="rooms" style="padding-bottom:5rem">
+    <div class="section-title">
+      <h3>Select From Our Premium Spaces</h3>
+      <p>Choose the category that fits your stay requirements. All rooms are regularly cleaned and disinfected.</p>
+    </div>
+
+    <div class="rooms-showcase">
+      <!-- Deluxe Card -->
+      <div class="room-card">
+        <h4>Deluxe Room</h4>
+        <div class="room-card-price">₹3,500 <span>/ night</span></div>
+        <ul class="features-list">
+          <li>
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Ultra-Premium Queen Bed
+          </li>
+          <li>
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            24/7 Smart Air Conditioning
+          </li>
+          <li>
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Flat Smart Screen TV & Wi-Fi
+          </li>
+          <li>
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Premium Lounge Area & Minibar
+          </li>
+        </ul>
+        <button class="btn-select-room" data-category="Deluxe">Select Room</button>
       </div>
-    </aside>
 
-    <!-- Main Content Panel -->
-    <main class="main-content">
-      <header class="main-header">
-        <div class="header-title">
-          <h2 id="view-title">Dashboard</h2>
-        </div>
-        <div class="header-actions">
-          <div class="live-clock">
-            <span class="clock-indicator"></span>
-            <span id="current-time-clock">12:00:00 PM</span>
+      <!-- AC Card -->
+      <div class="room-card">
+        <h4>AC Room</h4>
+        <div class="room-card-price">₹2,200 <span>/ night</span></div>
+        <ul class="features-list">
+          <li>
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Comfortable Double Bed
+          </li>
+          <li>
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Dedicated Air Conditioning
+          </li>
+          <li>
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            High Speed Wi-Fi Internet
+          </li>
+          <li>
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Attached Modern Restroom
+          </li>
+        </ul>
+        <button class="btn-select-room" data-category="AC">Select Room</button>
+      </div>
+
+      <!-- Non-AC Card -->
+      <div class="room-card">
+        <h4>Non-AC Room</h4>
+        <div class="room-card-price">₹1,200 <span>/ night</span></div>
+        <ul class="features-list">
+          <li>
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Clean Double Bed setup
+          </li>
+          <li>
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            High-Speed Ceiling Fan
+          </li>
+          <li>
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Complimentary High-speed Wi-Fi
+          </li>
+          <li>
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            24/7 Hot Water Facility
+          </li>
+        </ul>
+        <button class="btn-select-room" data-category="Non-AC">Select Room</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities Showcase -->
+  <section class="container" id="amenities" style="padding-bottom:5rem">
+    <div class="section-title">
+      <h3>World Class Amenities</h3>
+      <p>We provide multiple high-end utilities to ensure your stay is comfortable and hassle-free.</p>
+    </div>
+
+    <div class="amenities-grid">
+      <div class="amenity-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+          <rect x="6" y="6" width="12" height="1" rx="0.5" ry="0.5"></rect>
+          <path d="M12 10v12M8 22h8"></path>
+        </svg>
+        <p>Smart AC</p>
+      </div>
+      <div class="amenity-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+          <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+          <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+          <circle cx="12" cy="20" r="1"></circle>
+        </svg>
+        <p>Free Wi-Fi</p>
+      </div>
+      <div class="amenity-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+        </svg>
+        <p>Room Service</p>
+      </div>
+      <div class="amenity-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+        <p>24/7 Power</p>
+      </div>
+      <div class="amenity-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <p>Secure Vault</p>
+      </div>
+      <div class="amenity-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M23 12a11 11 0 1 1-22 0 11 11 0 0 1 22 0z"></path>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <p>24/7 Hot Water</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Online Booking Form Section -->
+  <section class="booking-section" id="booking">
+    <div class="container">
+      <div class="section-title">
+        <h3>Book Your Stay Online</h3>
+        <p>Fill out the reservation form below. Your request will be immediately sent to our reception desk.</p>
+      </div>
+
+      <div class="booking-box">
+        <form id="public-booking-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="book-name">Guest Full Name</label>
+              <input type="text" id="book-name" class="form-input" placeholder="e.g. Anil Joshi" required>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="book-mobile">Mobile Number</label>
+              <input type="tel" id="book-mobile" class="form-input" placeholder="e.g. 9011223344" pattern="[0-9]{10}" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="book-category">Select Room Type</label>
+              <select id="book-category" class="form-input" style="background-color:#0d131a" required>
+                <option value="Deluxe">Deluxe Room (₹3,500/night)</option>
+                <option value="AC">AC Room (₹2,200/night)</option>
+                <option value="Non-AC">Non-AC Room (₹1,200/night)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="book-guests">Number of Guests</label>
+              <input type="number" id="book-guests" class="form-input" value="1" min="1" max="4" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="book-checkin">Check-In Date</label>
+              <input type="date" id="book-checkin" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="book-checkout">Check-Out Date</label>
+              <input type="date" id="book-checkout" class="form-input" required>
+            </div>
           </div>
-          <button class="quick-checkout-btn" id="quick-checkout-action">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-              <polyline points="16 17 21 12 16 7"></polyline>
-              <line x1="21" y1="12" x2="9" y2="12"></line>
-            </svg>
-            Quick Check-Out
-          </button>
-        </div>
-      </header>
 
-      <!-- Viewport content injected here dynamically -->
-      <section class="viewport" id="main-viewport"></section>
-    </main>
-  </div>
+          <div style="text-align:center">
+            <button type="submit" class="btn-book-now" style="border:none">Submit Booking Request</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
 
-  <!-- Global Modal Overlay -->
-  <div class="modal-overlay" id="global-modal">
-    <div class="modal-content glass-card" id="modal-body">
-      <!-- Injected by scripts -->
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 VareX Lodging Hub. All Rights Reserved. Managed via VareX Cloud LMS.</p>
+    </div>
+  </footer>
+
+  <!-- Confirmation Modal -->
+  <div class="modal-overlay" id="booking-success-modal">
+    <div class="modal-content">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h3 style="font-size:1.5rem; font-weight:600; margin-bottom:0.75rem; color:#fff">Booking Request Submitted!</h3>
+      <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem; line-height:1.5">
+        Thank you for choosing VareX Lodge, <strong id="success-guest-name">Guest</strong>. Your reservation is pending desk confirmation. We will reach out to you shortly.
+      </p>
+      <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:10px; padding:0.75rem; margin-bottom:2rem; font-size:0.85rem">
+        Reference ID: <strong id="success-ref-id" style="color:var(--color-accent)">REF-XXXX</strong>
+      </div>
+      <button class="btn-select-room" id="btn-close-modal" style="width:100%">Back to Site</button>
     </div>
   </div>
 
-  <!-- Global Toast Notifications Container -->
-  <div class="toast-container" id="toast-alerts-container"></div>
-
-  <!-- Entry Script -->
-  <script type="module" src="/src/main.js"></script>
+  <script type="module" src="/src/public-main.js"></script>
 </body>
 </html>

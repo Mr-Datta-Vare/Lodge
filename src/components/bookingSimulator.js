@@ -9,63 +9,44 @@ export function renderBookingSimulator(container) {
     const pendingBookings = bookings.filter(b => b.status === 'Pending');
     const confirmedBookings = bookings.filter(b => b.status === 'Confirmed' || b.status === 'Approved');
 
-    const today = new Date().toISOString().split('T')[0];
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const tomorrowStr = tomorrow.toISOString().split('T')[0];
+    // Calculate room category demands based on pending bookings
+    const demandCount = { Deluxe: 0, AC: 0, 'Non-AC': 0 };
+    pendingBookings.forEach(b => {
+      if (demandCount[b.category] !== undefined) {
+        demandCount[b.category]++;
+      }
+    });
 
     container.innerHTML = `
-      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem; max-width:1100px; margin:0 auto;">
+      <div style="display:grid; grid-template-columns: 1fr 1.2fr; gap:2rem; max-width:1100px; margin:0 auto;">
         
-        <!-- Left: Customer Facing Reservation Form -->
-        <div class="glass-card" style="padding:2rem;">
-          <div style="text-align:center; margin-bottom:1.5rem">
-            <span class="badge badge-pending">ONLINE PORTAL</span>
-            <h3 style="font-size:1.25rem; font-weight:600; margin-top:0.5rem">Simulate Guest Booking Request</h3>
-            <p style="font-size:0.8rem; color:var(--text-muted)">Simulate a customer requesting a reservation via the web.</p>
+        <!-- Left: Online Booking System Manager Desk -->
+        <div class="glass-card" style="padding:2.5rem; display:flex; flex-direction:column; gap:1.5rem;">
+          <div style="text-align:center;">
+            <span class="badge badge-available">VareX Booking Sync</span>
+            <h3 style="font-size:1.4rem; font-weight:700; margin-top:0.75rem; color:var(--text-inverse)">Lodge Reservations desk</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.5rem">Receives online guest reservations from the public lodging landing page in real-time.</p>
           </div>
 
-          <form id="online-reservation-form" style="display:flex; flex-direction:column; gap:1.2rem">
-            <div class="form-group">
-              <label class="form-label" for="sim-name">Guest Name</label>
-              <input type="text" id="sim-name" class="form-input" placeholder="e.g. Anil Joshi" required>
-            </div>
+          <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:var(--border-radius-md); padding:1.25rem; font-size:0.85rem; display:flex; flex-direction:column; gap:0.75rem">
+            <h4 style="font-weight:600; color:var(--text-inverse); border-bottom:1px solid var(--border-color); padding-bottom:0.5rem">Queue Insights</h4>
+            <div style="display:flex; justify-content:space-between"><span>Pending Requests:</span><span style="font-weight:600; color:var(--color-warning)">${pendingBookings.length} bookings</span></div>
+            <div style="display:flex; justify-content:space-between"><span>Deluxe Rooms Demand:</span><span>${demandCount.Deluxe} queue</span></div>
+            <div style="display:flex; justify-content:space-between"><span>AC Rooms Demand:</span><span>${demandCount.AC} queue</span></div>
+            <div style="display:flex; justify-content:space-between"><span>Non-AC Rooms Demand:</span><span>${demandCount['Non-AC']} queue</span></div>
+          </div>
 
-            <div class="form-group">
-              <label class="form-label" for="sim-mobile">Mobile Number</label>
-              <input type="tel" id="sim-mobile" class="form-input" placeholder="e.g. 9011223344" pattern="[0-9]{10}" required>
-            </div>
-
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-              <div class="form-group">
-                <label class="form-label" for="sim-category">Room Category</label>
-                <select id="sim-category" class="form-input" style="background-color:#12131a">
-                  <option value="Deluxe">Deluxe</option>
-                  <option value="AC">AC</option>
-                  <option value="Non-AC">Non-AC</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="sim-guests">Guests Count</label>
-                <input type="number" id="sim-guests" class="form-input" value="1" min="1" max="4">
-              </div>
-            </div>
-
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-              <div class="form-group">
-                <label class="form-label" for="sim-checkin">Check-In</label>
-                <input type="date" id="sim-checkin" class="form-input" value="${today}" min="${today}">
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="sim-checkout">Check-Out</label>
-                <input type="date" id="sim-checkout" class="form-input" value="${tomorrowStr}" min="${tomorrowStr}">
-              </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary" style="margin-top:0.5rem">
-              Submit Reservation Request
+          <div style="margin-top:auto; text-align:center">
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1rem">To simulate a guest submitting an online booking, click the button below to open the customer website.</p>
+            <button class="btn btn-primary" id="btn-open-website" style="width:100%">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.5rem">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+              Open Public Booking Site
             </button>
-          </form>
+          </div>
         </div>
 
         <!-- Right: Admin Approval Queue -->
@@ -82,7 +63,7 @@ export function renderBookingSimulator(container) {
               ${pendingBookings.map(b => `
                 <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:var(--border-radius-md); padding:1rem; display:flex; flex-direction:column; gap:0.5rem">
                   <div style="display:flex; justify-content:space-between; align-items:center">
-                    <strong style="font-size:0.9rem">${b.guestName}</strong>
+                    <strong style="font-size:0.9rem; color:var(--text-inverse)">${b.guestName}</strong>
                     <span class="badge badge-pending">${b.category}</span>
                   </div>
                   <div style="font-size:0.75rem; color:var(--text-muted)">
@@ -110,7 +91,7 @@ export function renderBookingSimulator(container) {
               ${confirmedBookings.map(b => `
                 <div style="background:rgba(255,255,255,0.02); border-radius:var(--border-radius-md); padding:0.75rem; display:flex; justify-content:space-between; align-items:center; border:1px solid rgba(255,255,255,0.03)">
                   <div>
-                    <h5 style="font-size:0.85rem; font-weight:500">${b.guestName}</h5>
+                    <h5 style="font-size:0.85rem; font-weight:500; color:var(--text-inverse)">${b.guestName}</h5>
                     <span style="font-size:0.75rem; color:var(--text-muted)">Stay: ${b.checkIn} (${b.category})</span>
                   </div>
                   <span class="badge badge-available">CONFIRMED</span>
@@ -124,25 +105,9 @@ export function renderBookingSimulator(container) {
       </div>
     `;
 
-    // Hook Form Submit
-    const form = container.querySelector('#online-reservation-form');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const newBooking = {
-        id: 'b' + Date.now(),
-        guestName: container.querySelector('#sim-name').value,
-        mobile: container.querySelector('#sim-mobile').value,
-        category: container.querySelector('#sim-category').value,
-        checkIn: container.querySelector('#sim-checkin').value,
-        checkOut: container.querySelector('#sim-checkout').value,
-        numGuests: Number(container.querySelector('#sim-guests').value),
-        status: 'Pending'
-      };
-
-      store.addBooking(newBooking);
-      showToast(`Reservation request sent by ${newBooking.guestName}!`, 'info');
-      draw();
+    // Open website link listener
+    container.querySelector('#btn-open-website').addEventListener('click', () => {
+      window.open('/index.html', '_blank');
     });
 
     // Hook Approve click

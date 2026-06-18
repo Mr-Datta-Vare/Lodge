@@ -119,6 +119,11 @@ store.subscribe(() => {
   switchView(currentActiveView);
 });
 
+// Listen to cross-tab online booking events
+window.addEventListener('varex-booking-received', () => {
+  showToast('New Online Booking Request Received!', 'info');
+});
+
 // Initial startup
 startClock();
 switchView('dashboard');

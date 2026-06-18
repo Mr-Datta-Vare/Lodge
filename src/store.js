@@ -7,6 +7,24 @@ class Store {
     this.bookings = this._load('varex_bookings', initialBookings);
     this.payments = this._load('varex_payments', initialPayments);
     this.listeners = [];
+
+    // Cross-tab synchronization
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'varex_rooms') {
+        this.rooms = this._load('varex_rooms', initialRooms);
+        this.notify();
+      } else if (e.key === 'varex_guests') {
+        this.guests = this._load('varex_guests', initialGuests);
+        this.notify();
+      } else if (e.key === 'varex_bookings') {
+        this.bookings = this._load('varex_bookings', initialBookings);
+        this.notify();
+        window.dispatchEvent(new CustomEvent('varex-booking-received'));
+      } else if (e.key === 'varex_payments') {
+        this.payments = this._load('varex_payments', initialPayments);
+        this.notify();
+      }
+    });
   }
 
   _load(key, defaultValue) {
