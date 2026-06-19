@@ -151,9 +151,12 @@ body {
 
 /* Hero Section */
 .hero {
-  padding: 6rem 0;
+  padding: 8rem 0;
   text-align: center;
   position: relative;
+  background-image: linear-gradient(rgba(7, 9, 14, 0.85), rgba(7, 9, 14, 0.95)), url('/images/lobby.png');
+  background-size: cover;
+  background-position: center;
 }
 
 .hero-tag {
